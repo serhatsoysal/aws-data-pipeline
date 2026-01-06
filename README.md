@@ -1,5 +1,14 @@
 # AWS Data Processing Pipeline
 
+[![CI Pipeline](https://github.com/serhatsoysal/aws-data-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/serhatsoysal/aws-data-pipeline/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/serhatsoysal/aws-data-pipeline/actions/workflows/codeql.yml/badge.svg)](https://github.com/serhatsoysal/aws-data-pipeline/actions/workflows/codeql.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=serhatsoysal_aws-data-pipeline&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=serhatsoysal_aws-data-pipeline)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=serhatsoysal_aws-data-pipeline&metric=coverage)](https://sonarcloud.io/summary/new_code?id=serhatsoysal_aws-data-pipeline)
+[![codecov](https://codecov.io/gh/serhatsoysal/aws-data-pipeline/branch/master/graph/badge.svg)](https://codecov.io/gh/serhatsoysal/aws-data-pipeline)
+![Java](https://img.shields.io/badge/Java-17-orange.svg)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-brightgreen.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A production-ready, enterprise-grade data processing pipeline demonstrating professional AWS architecture with Java 17, Spring Boot 3, and Terraform Infrastructure as Code.
 
 ## Architecture Overview
@@ -136,6 +145,8 @@ aws-data-pipeline/
 
 ### 1. Configure Environment Variables
 
+Copy the environment template:
+
 ```bash
 cp .env.example .env
 ```
@@ -155,7 +166,32 @@ DB_NAME=pipeline
 DB_USERNAME=admin
 DB_PASSWORD=<your-secure-password>
 DB_PORT=5432
+JWT_SECRET=<your-generated-secret>
 ```
+
+### 1.1. Generate Secure JWT Secret
+
+**Important**: Never use the placeholder JWT_SECRET from `.env.example` in production.
+
+**Windows PowerShell**:
+```powershell
+$bytes = New-Object byte[] 64
+[Security.Cryptography.RNGCryptoServiceProvider]::Create().GetBytes($bytes)
+[Convert]::ToBase64String($bytes)
+```
+
+**Linux/Mac**:
+```bash
+openssl rand -base64 64
+```
+
+Copy the generated key and replace `JWT_SECRET` in your `.env` file.
+
+**Security Notes**:
+- Use cryptographically secure random generators (minimum 512-bit)
+- Never commit `.env` to version control
+- Rotate secrets regularly
+- Use different secrets for each environment (dev, staging, production)
 
 ### 2. Deploy Infrastructure with Terraform
 
