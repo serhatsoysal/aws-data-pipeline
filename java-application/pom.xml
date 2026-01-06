@@ -30,7 +30,7 @@
         <aws.lambda.version>1.2.3</aws.lambda.version>
         <aws.lambda.events.version>3.11.4</aws.lambda.events.version>
         <postgresql.version>42.7.1</postgresql.version>
-        <dotenv.version>3.0.0</dotenv.version>
+        <dotenv.version>3.2.0</dotenv.version>
         <jackson.version>2.16.1</jackson.version>
         
         <checkstyle.version>3.3.1</checkstyle.version>
