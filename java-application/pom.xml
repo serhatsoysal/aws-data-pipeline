@@ -124,7 +124,6 @@
                         <consoleOutput>true</consoleOutput>
                         <failsOnError>false</failsOnError>
                         <violationSeverity>warning</violationSeverity>
-                        <skip>true</skip>
                     </configuration>
                     <executions>
                         <execution>
