@@ -1,5 +1,7 @@
 package com.datapipeline.config;
 
+import java.time.Duration;
+
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.core.retry.RetryPolicy;
 import software.amazon.awssdk.http.apache.ApacheHttpClient;
@@ -10,8 +12,6 @@ import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.sns.SnsClient;
 import software.amazon.awssdk.services.sqs.SqsClient;
 import software.amazon.awssdk.transfer.s3.S3TransferManager;
-
-import java.time.Duration;
 
 public class AwsClientConfig {
 
