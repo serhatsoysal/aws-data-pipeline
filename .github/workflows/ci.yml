@@ -38,7 +38,7 @@ jobs:
         continue-on-error: true
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./java-application/ec2-api-service/target/site/jacoco/jacoco.xml,./java-application/lambda-processor/target/site/jacoco/jacoco.xml,./java-application/shared-config/target/site/jacoco/jacoco.xml
